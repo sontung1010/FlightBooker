@@ -124,22 +124,22 @@ ActiveRecord::Base.transaction do
 
   example = Passenger.create(name: 'Odin', email: 'odin@example.com')
 
-  @passengers = []
-  10.times do |i|
-    @passengers[i] = Passenger.create(name: Faker::Name.name, email: Faker::Internet.email)
-  end
-
-  5.times do |i|
-    random_passenger_reset!
-    flight = Flight.limit(1).order("RANDOM()").first
-    booking = Booking.new(flight: flight)
-    booking.passengers << example
-    n = case i
-        when 0 then 1
-        when 4 then 2
-        else i
-        end
-    n.times { booking.passengers << random_passenger }
-    booking.save
-  end
+#  @passengers = []
+#  10.times do |i|
+#    @passengers[i] = Passenger.create(name: Faker::Name.name, email: Faker::Internet.email)
+#  end
+#
+#  5.times do |i|
+#    random_passenger_reset!
+#    flight = Flight.limit(1).order("RANDOM()").first
+#    booking = Booking.new(flight: flight)
+#    booking.passengers << example
+#    n = case i
+#        when 0 then 1
+#       when 4 then 2
+#        else i
+#        end
+#    n.times { booking.passengers << random_passenger }
+#    booking.save
+#  end
 end
